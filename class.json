@@ -1,0 +1,73 @@
+[
+    {
+      "image": "image1.jpg",
+      "name": "Soccer Class",
+      "instructorName": "John Doe",
+      "availableSeats": 5,
+      "price": 50
+    },
+    {
+      "image": "image2.jpg",
+      "name": "Basketball Class",
+      "instructorName": "Jane Smith",
+      "availableSeats": 3,
+      "price": 60
+    },
+    {
+      "image": "image3.jpg",
+      "name": "Swimming Class",
+      "instructorName": "Michael Johnson",
+      "availableSeats": 0,
+      "price": 40
+    },
+    {
+      "image": "image4.jpg",
+      "name": "Tennis Class",
+      "instructorName": "Emily Davis",
+      "availableSeats": 7,
+      "price": 55
+    },
+    {
+      "image": "image5.jpg",
+      "name": "Gymnastics Class",
+      "instructorName": "David Lee",
+      "availableSeats": 2,
+      "price": 70
+    },
+    {
+      "image": "image6.jpg",
+      "name": "Volleyball Class",
+      "instructorName": "Sarah Brown",
+      "availableSeats": 4,
+      "price": 45
+    },
+    {
+      "image": "image7.jpg",
+      "name": "Baseball Class",
+      "instructorName": "Robert Wilson",
+      "availableSeats": 10,
+      "price": 35
+    },
+    {
+      "image": "image8.jpg",
+      "name": "Yoga Class",
+      "instructorName": "Jennifer Taylor",
+      "availableSeats": 8,
+      "price": 30
+    },
+    {
+      "image": "image9.jpg",
+      "name": "Badminton Class",
+      "instructorName": "William Anderson",
+      "availableSeats": 6,
+      "price": 25
+    },
+    {
+      "image": "image10.jpg",
+      "name": "Dance Class",
+      "instructorName": "Olivia Thomas",
+      "availableSeats": 1,
+      "price": 80
+    }
+  ]
+  

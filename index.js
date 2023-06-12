@@ -47,29 +47,33 @@ async function run() {
     await client.connect();
 
     const userCollection = client.db('summerCampdb').collection('user');
+    const instructorCollection = client.db("summerCampdb").collection("instructors");
 
     app.post("/jwt", (req, res)=>{
       const user = req.body;
       const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET,{
         expiresIn: "1h"
       });
-
       res.send({token});
     })
 
+    // user data store in the database
     app.post('/users', async(req, res)=>{
       const user = req.body;
       const query = {email: user.email}
       const existingUser = await userCollection.findOne(query);
-
       if (existingUser) {
         return res.send({ message: "user already exists" });
       }
-
       const result = await userCollection.insertOne(user);
       res.send(result);
     })
 
+// INSTRUCTOR data
+    app.get("/instructor", async(req, res)=>{
+      const result = await instructorCollection.find().toArray();
+      res.send(result);
+    })
 
     app.get("/", (req, res) => {
       res.send("Summer Camp Server is running..");

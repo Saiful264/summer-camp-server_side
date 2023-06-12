@@ -1,0 +1,70 @@
+[
+  {
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "numberOfClassesTaken": 10,
+    "classesTaken": ["Soccer", "Basketball", "Swimming"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Jane Smith",
+    "email": "janesmith@example.com",
+    "numberOfClassesTaken": 5,
+    "classesTaken": ["Tennis", "Volleyball"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Michael Johnson",
+    "email": "michaeljohnson@example.com",
+    "numberOfClassesTaken": 7,
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Emily Davis",
+    "email": "emilydavis@example.com",
+    "numberOfClassesTaken": 7,
+    "classesTaken": ["Gymnastics", "Dance"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "David Lee",
+    "email": "davidlee@example.com",
+    "numberOfClassesTaken": 3,
+    "classesTaken": ["Baseball"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Sarah Brown",
+    "email": "sarahbrown@example.com",
+    "numberOfClassesTaken": 2,
+    "classesTaken": ["Swimming"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Robert Wilson",
+    "email": "robertwilson@example.com",
+    "numberOfClassesTaken": 8,
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Jennifer Taylor",
+    "email": "jennifertaylor@example.com",
+    "numberOfClassesTaken": 6,
+    "classesTaken": ["Soccer", "Basketball"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "William Anderson",
+    "email": "williamanderson@example.com",
+    "numberOfClassesTaken": 4,
+    "classesTaken": ["Tennis"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  },
+  {
+    "name": "Olivia Thomas",
+    "email": "oliviathomas@example.com",
+    "numberOfClassesTaken": 8,
+    "classesTaken": ["Basketball", "Volleyball"],
+    "image": "https://i.ibb.co/xhDfHdY/chef-4.jpg"
+  }
+]
