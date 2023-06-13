@@ -25,7 +25,7 @@ const varifyJwt = (req, res, next)=>{
   });
 };
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 
 const uri = "mongodb://0.0.0.0:27017/";
@@ -48,6 +48,8 @@ async function run() {
 
     const userCollection = client.db('summerCampdb').collection('user');
     const instructorCollection = client.db("summerCampdb").collection("instructors");
+    const classCollection = client.db("summerCampdb").collection("class");
+    const selectClassCollection = client.db("summerCampdb").collection("selectClass");
 
     app.post("/jwt", (req, res)=>{
       const user = req.body;
@@ -57,7 +59,42 @@ async function run() {
       res.send({token});
     })
 
-    // user data store in the database
+    const verifyAdmin = async (req, res, next) => {
+      const email = req.decoded.email;
+      const query = { email: email };
+      const user = await userCollection.findOne(query);
+      if (user?.role !== "admin") {
+        return res
+          .status(403)
+          .send({ error: true, message: "forbidden message" });
+      }
+      next();
+    };
+
+
+    app.get("/users/admin/:email", async (req, res) => {
+      const email = req.params.email;
+
+      if (req.decoded.email !== email) {
+        res.send({ admin: false });
+      }
+
+      const query = { email: email };
+      const user = await userCollection.findOne(query);
+
+      if (user?.role === "admin") {
+        const result = { admin: user?.role === "admin" };
+        res.send(result);
+      }else if(user?.role === "instructor"){
+        const result = { instructor: user?.role === "instructor" };
+        res.send(result);
+      }else{
+        const result = { student: true };
+        res.send(result);
+      }
+    });
+
+    
     app.post('/users', async(req, res)=>{
       const user = req.body;
       const query = {email: user.email}
@@ -69,10 +106,84 @@ async function run() {
       res.send(result);
     })
 
+    app.get('/users', async(req, res)=>{
+      console.log("users");
+      const result = await userCollection.find().toArray();
+      res.send(result);
+    })
+
+    app.patch("/users/admin/:id", async (req, res) => {
+      const id = req.params.id;
+      // console.log(id);
+      const filter = { _id: new ObjectId(id) };
+      const updateDoc = {
+        $set: {
+          role: "admin",
+        },
+      };
+      const result = await userCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
+    app.patch("/users/instructor/:id", async (req, res) => {
+      const id = req.params.id;
+      // console.log(id);
+      const filter = { _id: new ObjectId(id) };
+      const updateDoc = {
+        $set: {
+          role: "instructor",
+        },
+      };
+      const result = await userCollection.updateOne(filter, updateDoc);
+      res.send(result);
+    });
+
+    app.delete("/users/admin/:id", async (req, res) => {
+      const id = req.params.id;
+      // console.log(id);
+      const query = { _id: new ObjectId(id) };
+      const result = await userCollection.deleteOne(query);
+      res.send(result);
+    });
+
+    // selectClass 
+    app.post("/selectClass", async(req, res)=>{
+      const selectClass = req.body;
+      const result = await selectClassCollection.insertOne(selectClass);
+      res.send(result);
+    })
+
+    app.get("/selectClass", async(req, res)=>{
+      const email = req.query.email;
+
+      if(!email){
+        res.send([]);
+      }
+
+      const query = {email: email}
+
+      const result = await selectClassCollection.find(query).toArray();
+      res.send(result);
+    })
+
+    app.delete("/selectClass/:id", async (req, res) => {
+      const id = req.params.id;
+      const query = { _id: new ObjectId(id) };
+      const result = await selectClassCollection.deleteOne(query);
+      res.send(result);
+    });
+
 // INSTRUCTOR data
     app.get("/instructor", async(req, res)=>{
       const result = await instructorCollection.find().toArray();
       res.send(result);
+    })
+
+
+    // class apis
+    app.get('/class', async(req, res)=>{
+      const result = await classCollection.find().toArray();
+      res.send(result)
     })
 
     app.get("/", (req, res) => {

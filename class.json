@@ -1,73 +1,92 @@
 [
-    {
-      "image": "image1.jpg",
-      "name": "Soccer Class",
-      "instructorName": "John Doe",
-      "availableSeats": 5,
-      "price": 50
-    },
-    {
-      "image": "image2.jpg",
-      "name": "Basketball Class",
-      "instructorName": "Jane Smith",
-      "availableSeats": 3,
-      "price": 60
-    },
-    {
-      "image": "image3.jpg",
-      "name": "Swimming Class",
-      "instructorName": "Michael Johnson",
-      "availableSeats": 0,
-      "price": 40
-    },
-    {
-      "image": "image4.jpg",
-      "name": "Tennis Class",
-      "instructorName": "Emily Davis",
-      "availableSeats": 7,
-      "price": 55
-    },
-    {
-      "image": "image5.jpg",
-      "name": "Gymnastics Class",
-      "instructorName": "David Lee",
-      "availableSeats": 2,
-      "price": 70
-    },
-    {
-      "image": "image6.jpg",
-      "name": "Volleyball Class",
-      "instructorName": "Sarah Brown",
-      "availableSeats": 4,
-      "price": 45
-    },
-    {
-      "image": "image7.jpg",
-      "name": "Baseball Class",
-      "instructorName": "Robert Wilson",
-      "availableSeats": 10,
-      "price": 35
-    },
-    {
-      "image": "image8.jpg",
-      "name": "Yoga Class",
-      "instructorName": "Jennifer Taylor",
-      "availableSeats": 8,
-      "price": 30
-    },
-    {
-      "image": "image9.jpg",
-      "name": "Badminton Class",
-      "instructorName": "William Anderson",
-      "availableSeats": 6,
-      "price": 25
-    },
-    {
-      "image": "image10.jpg",
-      "name": "Dance Class",
-      "instructorName": "Olivia Thomas",
-      "availableSeats": 1,
-      "price": 80
-    }
-  ]
-  
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Soccer Class",
+    "instructorName": "John Doe",
+    "instructorEmail": "johndoe@example.com",
+    "availableSeats": 5,
+    "price": 50,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Basketball Class",
+    "instructorName": "Jane Smith",
+    "instructorEmail": "janesmith@example.com",
+    "availableSeats": 3,
+    "price": 60,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Swimming Class",
+    "instructorName": "Michael Johnson",
+    "instructorEmail": "michaeljohnson@example.com",
+    "availableSeats": 0,
+    "price": 40,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Tennis Class",
+    "instructorName": "Emily Davis",
+    "instructorEmail": "emilydavis@example.com",
+    "availableSeats": 7,
+    "price": 55,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Gymnastics Class",
+    "instructorName": "David Lee",
+    "instructorEmail": "davidlee@example.com",
+    "availableSeats": 2,
+    "price": 70,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Volleyball Class",
+    "instructorName": "Sarah Brown",
+    "instructorEmail": "sarahbrown@example.com",
+    "availableSeats": 4,
+    "price": 45,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Baseball Class",
+    "instructorName": "Robert Wilson",
+    "instructorEmail": "robertwilson@example.com",
+    "availableSeats": 10,
+    "price": 35,
+    "status": "approve"
+  },
+  {
+    "image": "image8.jpg",
+    "name": "Yoga Class",
+    "instructorName": "Jennifer Taylor",
+    "instructorEmail": "jennifertaylor@example.com",
+    "availableSeats": 8,
+    "price": 30,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Badminton Class",
+    "instructorName": "William Anderson",
+    "instructorEmail": "williamanderson@example.com",
+    "availableSeats": 6,
+    "price": 25,
+    "status": "approve"
+  },
+  {
+    "image": "https://i.ibb.co/sysPmKC/pexels-pixabay-274422.jpg",
+    "name": "Dance Class",
+    "instructorName": "Olivia Thomas",
+    "instructorEmail": "oliviathomas@example.com",
+    "availableSeats": 1,
+    "price": 80,
+    "status": "approve"
+  }
+]
