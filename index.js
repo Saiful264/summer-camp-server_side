@@ -75,21 +75,21 @@ async function run() {
     app.get("/users/admin/:email", async (req, res) => {
       const email = req.params.email;
 
-      if (req.decoded.email !== email) {
-        res.send({ admin: false });
-      }
+      // if (req.decoded.email !== email) {
+      //   res.send({ admin: false });
+      // }
 
       const query = { email: email };
       const user = await userCollection.findOne(query);
 
       if (user?.role === "admin") {
-        const result = { admin: user?.role === "admin" };
+        const result = { role: "admin" };
         res.send(result);
       }else if(user?.role === "instructor"){
-        const result = { instructor: user?.role === "instructor" };
+        const result = { role: {instructor} };
         res.send(result);
       }else{
-        const result = { student: true };
+        const result = { role: "student" };
         res.send(result);
       }
     });
@@ -107,7 +107,6 @@ async function run() {
     })
 
     app.get('/users', async(req, res)=>{
-      console.log("users");
       const result = await userCollection.find().toArray();
       res.send(result);
     })
