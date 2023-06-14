@@ -86,11 +86,13 @@ async function run() {
         const result = { role: "admin" };
         res.send(result);
       }else if(user?.role === "instructor"){
-        const result = { role: {instructor} };
+        const result = { role: "instructor" };
         res.send(result);
-      }else{
+      }else if(user?.role === "student"){
         const result = { role: "student" };
         res.send(result);
+      }else{
+         res.status(401).send({ error: true, message: "unauthorized access" });
       }
     });
 
