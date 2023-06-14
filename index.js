@@ -28,8 +28,8 @@ const varifyJwt = (req, res, next)=>{
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 
-const uri = "mongodb://0.0.0.0:27017/";
-// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qawsvmr.mongodb.net/?retryWrites=true&w=majority;`
+// const uri = "mongodb://0.0.0.0:27017/";
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qawsvmr.mongodb.net/?retryWrites=true&w=majority;`
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -44,7 +44,7 @@ async function run() {
   try {
     // Connect the client to the server	(optional starting in v4.7)
     // write code here
-    await client.connect();
+    // await client.connect();
 
     const userCollection = client.db('summerCampdb').collection('user');
     const instructorCollection = client.db("summerCampdb").collection("instructors");
@@ -91,8 +91,6 @@ async function run() {
       }else if(user?.role === "student"){
         const result = { role: "student" };
         res.send(result);
-      }else{
-         res.status(401).send({ error: true, message: "unauthorized access" });
       }
     });
 
@@ -184,6 +182,19 @@ async function run() {
     // class apis
     app.get('/class', async(req, res)=>{
       const result = await classCollection.find().toArray();
+      res.send(result)
+    })
+
+    app.post('/class', async(req, res)=>{
+      const newItem = req.body;
+      const result = await classCollection.insertOne(newItem);
+      res.send(result)
+    })
+
+    app.get("/class/:email", async (req, res) => {
+      const email = req.params.email;
+      const query = { instructorEmail: email };
+      const result = await classCollection.find(query).toArray();
       res.send(result)
     })
 
