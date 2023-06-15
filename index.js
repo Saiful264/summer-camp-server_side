@@ -1,11 +1,18 @@
+require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const app = express();
-require("dotenv").config();
 const jwt = require("jsonwebtoken");
 const port = process.env.PORT || 5010;
 
 app.use(cors());
+
+app.use(function(req, res, next) {
+   res.header("Access-Control-Allow-Origin", "*");
+   res.header('Access-Control-Allow-Methods', 'DELETE, PUT, GET, POST,PATCH');
+   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+   next();
+});
 app.use(express.json());
 
 const varifyJwt = (req, res, next)=>{
@@ -29,7 +36,7 @@ const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 
 // const uri = "mongodb://0.0.0.0:27017/";
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qawsvmr.mongodb.net/?retryWrites=true&w=majority;`
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qawsvmr.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -138,7 +145,6 @@ async function run() {
 
     app.delete("/users/admin/:id", async (req, res) => {
       const id = req.params.id;
-      // console.log(id);
       const query = { _id: new ObjectId(id) };
       const result = await userCollection.deleteOne(query);
       res.send(result);
