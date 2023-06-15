@@ -113,7 +113,6 @@ async function run() {
 
     app.patch("/users/admin/:id", async (req, res) => {
       const id = req.params.id;
-      // console.log(id);
       const filter = { _id: new ObjectId(id) };
       const updateDoc = {
         $set: {
@@ -198,9 +197,6 @@ async function run() {
       res.send(result)
     })
 
-    app.get("/", (req, res) => {
-      res.send("Summer Camp Server is running..");
-    });
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
@@ -211,6 +207,9 @@ async function run() {
 }
 run().catch(console.dir);
 
+app.get("/", (req, res) => {
+  res.send("Summer Camp Server is running..");
+});
 
 app.listen(port, () => {
   console.log(`Summer Camp is running on port ${port}`);
