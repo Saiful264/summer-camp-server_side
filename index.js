@@ -36,8 +36,8 @@ const varifyJwt = (req, res, next)=>{
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 
 
-// const uri = "mongodb://0.0.0.0:27017/";
-const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qawsvmr.mongodb.net/?retryWrites=true&w=majority`;
+const uri = "mongodb://0.0.0.0:27017/";
+// const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.qawsvmr.mongodb.net/?retryWrites=true&w=majority`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
@@ -231,24 +231,27 @@ async function run() {
       const deleteResult = await selectClassCollection.deleteMany(query);
 
       res.send({ insertResult, deleteResult });
-      // res.send(insertResult);
     });
 
     app.get("/payments/:email", async (req, res) => {
       const email = req.params.email;
       const query = { email: email };
       const result = await paymentCollection.find(query).toArray();
-      // console.log(result.classId);
       res.send(result)
     })
 
-    // app.get("/payments/:email", async (req, res) => {
-    //   const email = req.params.email;
-    //   const query = { email: email };
-    //   const result = await paymentCollection.find(query).toArray();
-    //   const enrolled = {_id: result.classId}
-    //   res.send(result)
-    // })
+    app.get("/enrolled/:email", async (req, res) => {
+      const email = req.params.email;
+      const equery = { email: email };
+      const datas = await paymentCollection.find(equery).toArray();
+      const classIds = datas.map(item => item.classId).flat();
+      const query = {
+        _id: { $in: classIds.map((id) => new ObjectId(id)) },
+      };
+      // const query = {_id: new ObjectId(classIds)}
+      const result = await classCollection.find(query).toArray();
+      res.send(result)
+  })
 
     // Send a ping to confirm a successful connection
     await client.db("admin").command({ ping: 1 });
